@@ -1,0 +1,10 @@
+.star{
+    opacity: .5;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+}
+
+.star:hover{
+    opacity: 1;
+}

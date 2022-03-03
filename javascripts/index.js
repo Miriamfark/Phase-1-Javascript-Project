@@ -1,12 +1,28 @@
+const dishes = [
+  {
+    id: 1,
+    name: "chicken",
+    description: "yummy",
+    image: "https://www.kosher.com/resized/recipe_list_item/t/a/Tamarind_chicken_W.jpg"
+  },
+  {
+    id: 2,
+    name: "shnitzel",
+    description: "crunchy",
+    image: "#"
+  }
+]
+
 //NODE GETTERS
 const mainButton = () => document.getElementById('main-button')
 const sideButton = () => document.getElementById('side-button')
 const vegetableButton = () => document.getElementById('vegetable-button')
-const mainWrapper = () => document.getElementById('main-container')
+const mainContainer = () => document.getElementById('main-container')
+const stars = () => document.querySelectorAll(".star")
 
 //HELPER FUNCTIONS
-const resetMainWrapper = () => {
-    mainWrapper().innerHTML = ""
+const resetMainContainer = () => {
+    mainContainer().innerHTML = ""
 }
 
 const createCard = (dish) => {
@@ -19,45 +35,50 @@ const createCard = (dish) => {
   const pDescription = document.createElement("p");
   const divCardAction = document.createElement('div');
   const link1 = document.createElement("a")
+  const divStarWrapper = document.createElement('div')
+  const star1 = document.createElement('div')
+  const star2 = document.createElement('div')
+  const star3 = document.createElement('div')
+  const star4 = document.createElement('div')
+  const star5 = document.createElement('div')
 
   divCard.className = "card";
   divImage.className = "card-image"
   span.className = "card-title";
   divCardContent.className = "card-content"
   divCardAction.className = "card-action"
+  divStarWrapper.className = "star-wrapper"
+  star1.className = "star"
+  star2.className = "star"
+  star3.className = "star"
+  star4.className = "star"
+  star5.className = "star"
 
-  image.setAttribute("src", "https://www.kosher.com/resized/recipe_list_item/t/a/Tamarind_chicken_W.jpg");
-  span.innerText = "Card Title";
-  pDescription.innerText = "some filler text"
+
+  image.setAttribute("src", dish.image);
+  span.innerText = dish.name;
+  pDescription.innerText = dish.description
   link1.setAttribute("href", "#")
-  link1.innerText = "Click here!"
+  link1.innerText = "Rate this"
+  star1.innerText = "⭐"
+  star2.innerText = "⭐"
+  star3.innerText = "⭐"
+  star4.innerText = "⭐"
+  star5.innerText = "⭐"
 
   divImage.appendChild(image);
   divImage.appendChild(span);
   divCardContent.appendChild(pDescription)
   divCardAction.appendChild(link1)
+  divCardAction.appendChild(star1)
+  divCardAction.appendChild(star2)
+  divCardAction.appendChild(star3)
+  divCardAction.appendChild(star4)
+  divCardAction.appendChild(star5)
   divCard.appendChild(divImage)
-  divCard.appendChild(divCardContent
-  divCard.appendChild(divCardAction))
+  divCard.appendChild(divCardContent)
+  divCard.appendChild(divCardAction)
 
-
-  //   <div class="row">
-  //   <div class="col s12 m7">
-  //     <div class="card">
-  //       <div class="card-image">
-  //         <img src="images/sample-1.jpg">
-  //         <span class="card-title">Card Title</span>
-  //       </div>
-  //       <div class="card-content">
-  //         <p>I am a very simple card. I am good at containing small bits of information.
-  //         I am convenient because I require little markup to use effectively.</p>
-  //       </div>
-  //       <div class="card-action">
-  //         <a href="#">This is a link</a>
-  //       </div>
-  //     </div>
-  //   </div>
-  // </div>
   return divCard
 }
 
@@ -69,48 +90,52 @@ const addCards = () => {
 
     row.appendChild(column)
 
-    mainWrapper.appendChild(row)
+    mainContainer().appendChild(row)
   })
 }
 
-const addCard = () => {
+const addCard = (dish) => {
 
   const column = document.createElement("div");
-  column.className = "col s12 m7"
+  column.className = "col s12 m4"
 
-  column.appendChild(createCard())
+  column.appendChild(createCard(dish))
 
- 
+ return column
 }
 
 //EVENT HANDLERS
 const renderMainsToPage = (e) => {
     e.preventDefault()
-    resetMainWrapper()
+    resetMainContainer()
 
     const h2 = document.createElement("h2")
     h2.innerText = "Main Dishes"
-    mainWrapper().appendChild(h2)
+    mainContainer().appendChild(h2)
+
+    addCards()
 }
 
 const renderSidesToPage = (e) => {
     e.preventDefault()
-    resetMainWrapper()
+    resetMainContainer()
 
     const h2 = document.createElement("h2")
     h2.innerText = "Side Dishes"
-    mainWrapper().appendChild(h2)
+    mainContainer().appendChild(h2)
 
     addCards()
 }
 
 const renderVegetablesToPage = (e) => {
     e.preventDefault()
-    resetMainWrapper()
+    resetMainContainer()
 
     const h2 = document.createElement("h2")
     h2.innerText = "Vegetables, Soups, and Salads"
-    mainWrapper().appendChild(h2)
+    mainContainer().appendChild(h2)
+
+    addCards()
 }
 
 //EVENT LISTENERS
@@ -132,3 +157,5 @@ document.addEventListener("DOMContentLoaded", () => {
     attachSideLinkEvent()
     attachVegetableLinkEvent()
 }) 
+
+document.addEventListener
