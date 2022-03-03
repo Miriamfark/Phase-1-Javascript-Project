@@ -1,22 +1,21 @@
 const dishes = [
   {
     id: 1,
-    name: "chicken",
+    name: "Chicken",
     description: "yummy",
     image: "https://www.kosher.com/resized/recipe_list_item/t/a/Tamarind_chicken_W.jpg"
   },
   {
     id: 2,
-    name: "shnitzel",
+    name: "Shnitzel",
     description: "crunchy",
-    image: "#"
+    image: "https://www.kosher.com/resized/recipe_list_item/c/o/Cohen,Yaniv._Smoked_Paprika_Schnitzel_crop.jpg"
   }
 ]
 
 //NODE GETTERS
-const mainButton = () => document.getElementById('main-button')
-const sideButton = () => document.getElementById('side-button')
-const vegetableButton = () => document.getElementById('vegetable-button')
+const shnitzelButton = () => document.getElementById('main-button')
+const ideaButton = () => document.getElementById('side-button')
 const mainContainer = () => document.getElementById('main-container')
 const stars = () => document.querySelectorAll(".star")
 
@@ -105,57 +104,44 @@ const addCard = (dish) => {
 }
 
 //EVENT HANDLERS
-const renderMainsToPage = (e) => {
+const renderShnitzelToPage = (e) => {
     e.preventDefault()
     resetMainContainer()
 
     const h2 = document.createElement("h2")
-    h2.innerText = "Main Dishes"
+    h2.innerText = "Shnitzel"
     mainContainer().appendChild(h2)
 
     addCards()
 }
 
-const renderSidesToPage = (e) => {
+const renderIdeasToPage = (e) => {
     e.preventDefault()
     resetMainContainer()
 
     const h2 = document.createElement("h2")
-    h2.innerText = "Side Dishes"
+    h2.innerText = "Ideas"
     mainContainer().appendChild(h2)
 
     addCards()
 }
 
-const renderVegetablesToPage = (e) => {
-    e.preventDefault()
-    resetMainContainer()
-
-    const h2 = document.createElement("h2")
-    h2.innerText = "Vegetables, Soups, and Salads"
-    mainContainer().appendChild(h2)
-
-    addCards()
-}
 
 //EVENT LISTENERS
-const attachMainLinkEvent = () => {
-    mainButton().addEventListener('click', renderMainsToPage)
+const attachShnitzelLinkEvent = () => {
+    shnitzelButton().addEventListener('click', renderShnitzelToPage)
 }
 
-const attachSideLinkEvent = () => {
-    sideButton().addEventListener('click', renderSidesToPage)
+const attachIdeaLinkEvent = () => {
+    ideaButton().addEventListener('click', resetMainContainer)
 }
 
-const attachVegetableLinkEvent = () => {
-    vegetableButton().addEventListener('click', renderVegetablesToPage)
-}
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    attachMainLinkEvent()
-    attachSideLinkEvent()
-    attachVegetableLinkEvent()
+    attachShnitzelLinkEvent()
+    attachIdeaLinkEvent()
+    
 }) 
 
 document.addEventListener
