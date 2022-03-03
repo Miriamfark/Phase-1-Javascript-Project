@@ -18,6 +18,7 @@ const shnitzelButton = () => document.getElementById('main-button')
 const ideaButton = () => document.getElementById('side-button')
 const mainContainer = () => document.getElementById('main-container')
 const stars = () => document.querySelectorAll(".star")
+const submitButton = () => document.getElementById("form-button")
 
 //HELPER FUNCTIONS
 const resetMainContainer = () => {
@@ -103,6 +104,65 @@ const addCard = (dish) => {
  return column
 }
 
+const createForm = () => {
+
+  const formWrapper = document.createElement('div')
+  const form = document.createElement('form')
+  const ul = document.createElement('ul')
+  const li1 = document.createElement('li')
+  const nameLabel = document.createElement('label')
+  const input = document.createElement('label')
+  const li2 = document.createElement('li')
+  const ideaLabel = document.createElement('label')
+  const textArea = document.createElement('textarea')
+  const li3 = document.createElement('li')
+  const button = document.createElement('button')
+
+  // nameLabel.createAttribute('for')
+  // att.value = "name"
+  nameLabel.innerText = "Name:"
+  input.innerHTML = "<input type='text' id='name' name='user_name'>"
+  ideaLabel.innerText = "Type Your Shnitzel Ideas Here:"
+  formWrapper.className = "form-wrapper"
+  li3.className = "button"
+  button.innerText = "Submit"
+  button.id = "form-button"
+  
+  //textArea.innerHTML = "<textarea id='msg' name='user_message'></textarea>"
+
+  form.appendChild(ul)
+  ul.appendChild(li1)
+  ul.appendChild(li2)
+  ul.appendChild(li3)
+  li1.appendChild(nameLabel)
+  li1.appendChild(input)
+  li2.appendChild(ideaLabel)
+  li2.appendChild(textArea)
+  li3.appendChild(button)
+  formWrapper.appendChild(form)
+  mainContainer().appendChild(formWrapper)
+
+ // return form
+
+//   <form action="/my-handling-form-page" method="post">
+//  <ul>
+//   <li>
+//     <label for="name">Name:</label>
+//     <input type="text" id="name" name="user_name">
+//   </li>
+//   <li>
+//     <label for="msg">Message:</label>
+//     <textarea id="msg" name="user_message"></textarea>
+//   </li>
+{/* <li class="button">
+  <button type="submit">Send your message</button>
+</li> */}
+//  </ul>
+// </form>
+
+}
+
+
 //EVENT HANDLERS
 const renderShnitzelToPage = (e) => {
     e.preventDefault()
@@ -115,15 +175,16 @@ const renderShnitzelToPage = (e) => {
     addCards()
 }
 
-const renderIdeasToPage = (e) => {
-    e.preventDefault()
-    resetMainContainer()
+const renderFormToPage = (e) => {
+  e.preventDefault()
+  resetMainContainer()
 
-    const h2 = document.createElement("h2")
-    h2.innerText = "Ideas"
-    mainContainer().appendChild(h2)
+  const h2 = document.createElement("h2")
+  h2.innerText = "Some more great shnitzels coming soon..."
+  mainContainer().appendChild(h2)
+  //mainContainer().appendChild(form)
 
-    addCards()
+   createForm()
 }
 
 
@@ -133,7 +194,7 @@ const attachShnitzelLinkEvent = () => {
 }
 
 const attachIdeaLinkEvent = () => {
-    ideaButton().addEventListener('click', resetMainContainer)
+    ideaButton().addEventListener('click', renderFormToPage)
 }
 
 
@@ -144,4 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
 }) 
 
-document.addEventListener
+const submitForm = () => {
+  submitButton().addEventListener('click', (e) => console.log(e.target))
+    // //e.preventDefault
+    // alert("Thank you for your great idea!")
+    // console.log(e.target)
+  
+}

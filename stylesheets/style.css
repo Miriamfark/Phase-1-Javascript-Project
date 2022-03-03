@@ -14,3 +14,16 @@
 .star:hover{
     opacity: 1;
 }
+
+.form-wrapper {
+    height: 300px;
+    width: 500px;
+}
+
+#main-container {
+    margin-left: 50px;
+}
+
+.nav-wrapper {
+    padding-left: 50px;
+}
