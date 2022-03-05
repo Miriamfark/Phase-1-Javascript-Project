@@ -33,5 +33,9 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    width: 50%
+    width: 40%
+}
+
+img {
+    max-height: 250px;
 }

@@ -1,26 +1,21 @@
-const dishes = [
-  {
-    id: 1,
-    name: "Chicken",
-    description: "yummy",
-    image: "https://www.kosher.com/resized/recipe_list_item/t/a/Tamarind_chicken_W.jpg"
-  },
-  {
-    id: 2,
-    name: "Shnitzel",
-    description: "crunchy",
-    image: "https://www.kosher.com/resized/recipe_list_item/c/o/Cohen,Yaniv._Smoked_Paprika_Schnitzel_crop.jpg"
-  }
-]
+let dishes = []
 
 //NODE GETTERS
 const shnitzelButton = () => document.getElementById('main-button')
 const ideaButton = () => document.getElementById('side-button')
 const mainContainer = () => document.getElementById('main-container')
-const stars = () => document.querySelectorAll(".star")
+const stars = () => document.getElementsByClassName("star")
 const submitButton = () => document.getElementById("form-button")
 
 //HELPER FUNCTIONS
+const fetchDishes = () => {
+  fetch('http://localhost:3000/dishes')
+  .then(resp => resp.json())
+  .then(data => {
+    dishes = data
+  })
+}
+
 const resetMainContainer = () => {
     mainContainer().innerHTML = ""
 }
@@ -100,7 +95,7 @@ const addCard = (dish) => {
   column.className = "col s12 m4"
 
   column.appendChild(createCard(dish))
-
+  //attachRateEvent()
  return column
 }
 
@@ -186,6 +181,7 @@ const renderFormToPage = (e) => {
   //mainContainer().appendChild(form)
 
    createForm()
+   submitForm()
 }
 
 const renderIdeasToPage = (e) => {
@@ -206,6 +202,14 @@ const attachShnitzelLinkEvent = () => {
     shnitzelButton().addEventListener('click', renderShnitzelToPage)
 }
 
+// function attachRateEvent() {
+//   stars().addEventListener("click", consoleLogStars)
+// }
+
+// function consoleLogStars(event) {
+//   console.log(event)
+// }
+
 const attachIdeaLinkEvent = () => {
     ideaButton().addEventListener('click', renderFormToPage)
 }
@@ -213,8 +217,10 @@ const attachIdeaLinkEvent = () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    attachShnitzelLinkEvent()
+  fetchDishes()  
+  attachShnitzelLinkEvent()
     attachIdeaLinkEvent()
+    
     
 }) 
 

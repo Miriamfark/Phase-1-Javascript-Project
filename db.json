@@ -1,0 +1,42 @@
+{
+    "dishes": [
+        {
+            "id": 1,
+            "name": "Classic Shnitzel",
+            "description": "Can it get better than this? Juicy chicken with a flavorful, crispy coating",
+            "image": "https://www.kosher.com/resized/recipe_list_item/c/o/Cohen,Yaniv._Smoked_Paprika_Schnitzel_crop.jpg"
+          },
+          {
+            "id": 2,
+            "name": "Garlic Sesame Shnitzel",
+            "description": "A flavor explosion! Toasted sesame meets pungent garlic.",
+            "image": "https://betweencarpools.com/wp-content/uploads/2016/08/shnitzel-sesame-1024x768.jpg"
+          },
+          {
+              "id": 3,
+              "name": "Coconut Shnitzel",
+              "description": "Shnitzel with a tropical twist",
+              "image":"https://betweencarpools.com/wp-content/uploads/2017/04/shnitzel-G.jpg"
+          },
+          {
+              "id": 4,
+              "name": "Potato Chip Shnitzel",
+              "description": "CRUNCH!",
+              "image": "https://betweencarpools.com/wp-content/uploads/2017/04/shnitzel-H-1024x683.jpg"
+          },
+          {
+              "id": 5,
+              "name": "Maple Pecan Shnitzel",
+              "description": "Savory, sweet, and a little nutty...",
+              "image": "https://betweencarpools.com/wp-content/uploads/2017/04/shnitzel-D-1024x683.jpg"
+          },
+          {
+              "id": 6,
+              "name": "Beer Battered Chicken Fingers",
+              "description": "Shnitzel and beer make the perfect pairing",
+              "image": "https://www.kosher.com/resized/recipe_list_item/b/a/battered_chicken_fingers_shutterstock.jpg"
+          }
+          
+          
+    ]
+}
