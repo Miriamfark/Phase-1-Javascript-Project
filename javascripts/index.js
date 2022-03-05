@@ -127,6 +127,7 @@ const createForm = () => {
   li3.className = "button"
   button.innerText = "Submit"
   button.id = "form-button"
+  textArea.id = "idea-text"
   
   //textArea.innerHTML = "<textarea id='msg' name='user_message'></textarea>"
 
@@ -187,6 +188,18 @@ const renderFormToPage = (e) => {
    createForm()
 }
 
+const renderIdeasToPage = (e) => {
+  e.preventDefault()
+  const ideas = e.target.querySelector('#idea-text').value
+  console.log(ideas)
+
+  const p = document.createElement('p')
+  const ideaDiv = document.createElement('div')
+  p.textContent = ideas
+  ideaDiv.appendChild(p)
+  event.target.reset()
+}
+
 
 //EVENT LISTENERS
 const attachShnitzelLinkEvent = () => {
@@ -206,9 +219,5 @@ document.addEventListener("DOMContentLoaded", () => {
 }) 
 
 const submitForm = () => {
-  submitButton().addEventListener('click', (e) => console.log(e.target))
-    // //e.preventDefault
-    // alert("Thank you for your great idea!")
-    // console.log(e.target)
-  
+  submitButton().addEventListener('submit', renderIdeasToPage)
 }

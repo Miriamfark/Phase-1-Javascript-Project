@@ -27,3 +27,11 @@
 .nav-wrapper {
     padding-left: 50px;
 }
+
+#main-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 50%
+}
