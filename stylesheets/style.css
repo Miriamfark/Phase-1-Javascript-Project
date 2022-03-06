@@ -15,6 +15,14 @@
     opacity: 1;
 }
 
+.active{
+    opacity: 1;
+}
+
+.inactive{
+    opacity: .5;
+}
+
 .form-wrapper {
     height: 300px;
     width: 500px;

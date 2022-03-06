@@ -1,10 +1,12 @@
 let dishes = []
+const emptyStar = "☆"
+const fullStar = "★"
 
 //NODE GETTERS
 const shnitzelButton = () => document.getElementById('main-button')
 const ideaButton = () => document.getElementById('side-button')
 const mainContainer = () => document.getElementById('main-container')
-const stars = () => document.getElementsByClassName("star")
+//const stars = () => document.getElementsByClassName("star")
 const submitButton = () => document.getElementById("form-button")
 
 //HELPER FUNCTIONS
@@ -55,11 +57,26 @@ const createCard = (dish) => {
   pDescription.innerText = dish.description
   link1.setAttribute("href", "#")
   link1.innerText = "Rate this"
-  star1.innerText = "⭐"
-  star2.innerText = "⭐"
-  star3.innerText = "⭐"
-  star4.innerText = "⭐"
-  star5.innerText = "⭐"
+  star1.innerText = "☆"
+  star2.innerText = "☆"
+  star3.innerText = "☆"
+  star4.innerText = "☆"
+  star5.innerText = "☆"
+
+  const stars = [...document.querySelectorAll(".star")]
+
+  const starsEventListener = () =>stars.forEach(addEventListener("click", rateEvent))
+  // star1.classList.add("active", "inactive")
+  // star2.classList.add("active", "inactive")
+  // star3.classList.add("active", "inactive")
+  // star4.classList.add("active", "inactive")
+  // star5.classList.add("active", "inactive")
+
+  // star1.addEventListener('click', rateEvent)
+  // star2.addEventListener('click', rateEvent)
+  // star3.addEventListener('click', rateEvent)
+  // star4.addEventListener('click', rateEvent)
+  // star5.addEventListener('click', rateEvent)
 
   divImage.appendChild(image);
   divImage.appendChild(span);
@@ -95,7 +112,7 @@ const addCard = (dish) => {
   column.className = "col s12 m4"
 
   column.appendChild(createCard(dish))
-  //attachRateEvent()
+
  return column
 }
 
@@ -112,6 +129,8 @@ const createForm = () => {
   const textArea = document.createElement('textarea')
   const li3 = document.createElement('li')
   const button = document.createElement('button')
+
+  button.addEventListener('submit', renderIdeasToPage)
 
   // nameLabel.createAttribute('for')
   // att.value = "name"
@@ -184,31 +203,39 @@ const renderFormToPage = (e) => {
    submitForm()
 }
 
-const renderIdeasToPage = (e) => {
-  e.preventDefault()
-  const ideas = e.target.querySelector('#idea-text').value
-  console.log(ideas)
+const renderIdeasToPage = (event) => {
 
-  const p = document.createElement('p')
-  const ideaDiv = document.createElement('div')
-  p.textContent = ideas
-  ideaDiv.appendChild(p)
-  event.target.reset()
+  event.preventDefault()
+  console.log(event)
+  // e.preventDefault()
+  // const ideas = e.target.querySelector('#idea-text').value
+  // console.log(ideas)
+
+  // const p = document.createElement('p')
+  // const ideaDiv = document.createElement('div')
+  // p.textContent = ideas
+  // ideaDiv.appendChild(p)
+  // event.target.reset()
 }
 
+
+const rateEvent = (event) => {
+  console.log(event.target)
+
+  if (stars.target.innerText === fullStar) {
+    stars.target.innerText = emptyStar
+    stars.target.classList.remove("active")
+  } else if (stars.target.innerText === emptyStar) {
+    stars.target.innerText = fullStar
+    stars.target.classList.add("active")
+  }
+ 
+  }
 
 //EVENT LISTENERS
 const attachShnitzelLinkEvent = () => {
     shnitzelButton().addEventListener('click', renderShnitzelToPage)
 }
-
-// function attachRateEvent() {
-//   stars().addEventListener("click", consoleLogStars)
-// }
-
-// function consoleLogStars(event) {
-//   console.log(event)
-// }
 
 const attachIdeaLinkEvent = () => {
     ideaButton().addEventListener('click', renderFormToPage)
@@ -224,6 +251,3 @@ document.addEventListener("DOMContentLoaded", () => {
     
 }) 
 
-const submitForm = () => {
-  submitButton().addEventListener('submit', renderIdeasToPage)
-}
