@@ -2,25 +2,39 @@
     font:400
 }
 
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
+    margin-right: 0px;
+}
 
+.stars{
+    display: flex;
+}
 
-.star{
-    opacity: .5;
+.stars a{
+    opacity: 50%;
     cursor: pointer;
-    display: inline-block;
     float: right;
+    padding: 2px;
 }
 
-.star:hover{
-    opacity: 1;
+.stars:hover a{
+    opacity: 100%;
 }
 
-.active{
-    opacity: 1;
+.stars a:hover{
+    opacity: 100%;
 }
 
-.inactive{
-    opacity: .5;
+.stars a:hover ~ a{
+    opacity: 50%;
+}
+
+.stars a .active{
+    opacity: 100%;
+}
+
+.stars.disabled{
+    pointer-events: none;
 }
 
 .form-wrapper {
