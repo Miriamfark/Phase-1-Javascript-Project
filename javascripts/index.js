@@ -5,6 +5,8 @@ const shnitzelButton = () => document.getElementById('main-button')
 const ideaButton = () => document.getElementById('side-button')
 const mainContainer = () => document.getElementById('main-container')
 const submitButton = () => document.getElementById("form-button")
+const starWrapper = () => document.querySelector(".stars")
+const stars = () => document.querySelectorAll(".stars a")
 
 //HELPER FUNCTIONS
 const fetchDishes = () => {
@@ -67,6 +69,21 @@ const createCard = (dish) => {
   divCard.appendChild(divImage)
   divCard.appendChild(divCardContent)
   divCard.appendChild(divCardAction)
+
+  stars().forEach((star, clickedIndex) => {
+    star.addEventListener("click", ()=> {
+  
+      //starWrapper().classList.add("disabled")
+      
+      stars().forEach((otherStar, otherIndex) => {
+        if (otherIndex <= clickedIndex) {
+          otherStar.classList.add("active")
+        }
+      }) 
+  
+      alert(`star of index ${clickedIndex + 1} was clicked`)
+    })
+  })
 
   return divCard
 }
@@ -152,10 +169,8 @@ const renderFormToPage = (e) => {
   const h2 = document.createElement("h2")
   h2.innerText = "Some more great shnitzels coming soon..."
   mainContainer().appendChild(h2)
-  //mainContainer().appendChild(form)
   
    createForm()
-   //submitForm()
 }
 
 const renderIdeasToPage = (event) => {
@@ -179,57 +194,57 @@ const renderIdeasToPage = (event) => {
 }
 
 
-const rateEvent = (event) => {
-  console.log(event)
-  const ratingStars = [...document.getElementsByClassName("star")]
-  executeRating(ratingStars)
-}
-
-  // if (event.target.innerText === fullStar) {
-  //   event.target.innerText = emptyStar
-  //   event.target.classList.remove("active")
-  // } else if (event.target.innerText === emptyStar) {
-  //   event.target.innerText = fullStar
-  //   event.target.classList.add("active")
-  // }
-
-  const executeRating = (stars) => {
-
-    stars.map((star)=> {
-    
-      let i = stars.indexOf(star)
-      console.log(i)
-
-      if (star.className === "inactive") {
-        for (i; i >=0; --i) stars[i].classList.add("active")
-        } else {
-        for (i; i < stars.length; ++i) stars[i].classList.remove("active")
-        }
-      })
-    }
-  
-  
-
- // const ratingStars = [...document.getElementsByClassName("rating__star")];
-
-// function executeRating(stars) {
-//   const starClassActive = "rating__star fas fa-star";
-//   const starClassInactive = "rating__star far fa-star";
-//   const starsLength = stars.length;
-//   let i;
-//   stars.map((star) => {
-//     star.onclick = () => {
-//       i = stars.indexOf(star);
-
-//       if (star.className===starClassInactive) {
-//         for (i; i >= 0; --i) stars[i].className = starClassActive;
-//       } else {
-//         for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
-//       }
-//     };
-//   });
+// const rateEvent = (event) => {
+//   console.log(event)
+//   const ratingStars = [...document.getElementsByClassName("star")]
+//   executeRating(ratingStars)
 // }
-// executeRating(ratingStars);
+
+//   // if (event.target.innerText === fullStar) {
+//   //   event.target.innerText = emptyStar
+//   //   event.target.classList.remove("active")
+//   // } else if (event.target.innerText === emptyStar) {
+//   //   event.target.innerText = fullStar
+//   //   event.target.classList.add("active")
+//   // }
+
+//   const executeRating = (stars) => {
+
+//     stars.map((star)=> {
+    
+//       let i = stars.indexOf(star)
+//       console.log(i)
+
+//       if (star.className === "inactive") {
+//         for (i; i >=0; --i) stars[i].classList.add("active")
+//         } else {
+//         for (i; i < stars.length; ++i) stars[i].classList.remove("active")
+//         }
+//       })
+//     }
+  
+  
+
+//  // const ratingStars = [...document.getElementsByClassName("rating__star")];
+
+// // function executeRating(stars) {
+// //   const starClassActive = "rating__star fas fa-star";
+// //   const starClassInactive = "rating__star far fa-star";
+// //   const starsLength = stars.length;
+// //   let i;
+// //   stars.map((star) => {
+// //     star.onclick = () => {
+// //       i = stars.indexOf(star);
+
+// //       if (star.className===starClassInactive) {
+// //         for (i; i >= 0; --i) stars[i].className = starClassActive;
+// //       } else {
+// //         for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+// //       }
+// //     };
+// //   });
+// // }
+// // executeRating(ratingStars);
  
   
 
@@ -249,6 +264,6 @@ document.addEventListener("DOMContentLoaded", () => {
   attachShnitzelLinkEvent()
     attachIdeaLinkEvent()
     
-    
 }) 
+
 
