@@ -56,9 +56,8 @@
     margin-right: auto;
     margin-top: 50px;
     width: 40%
-    max-height: auto;
 }
 
 img {
-    max-height: 190px;
+    max-height: 250px;
 }

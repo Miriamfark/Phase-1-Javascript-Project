@@ -70,20 +70,20 @@ const createCard = (dish) => {
   divCard.appendChild(divCardContent)
   divCard.appendChild(divCardAction)
 
-  stars().forEach((star, clickedIndex) => {
-    star.addEventListener("click", ()=> {
+  // stars().forEach((star, clickedIndex) => {
+  //   star.addEventListener("click", ()=> {
   
-      //starWrapper().classList.add("disabled")
+  //     //starWrapper().classList.add("disabled")
       
-      stars().forEach((otherStar, otherIndex) => {
-        if (otherIndex <= clickedIndex) {
-          otherStar.classList.add("active")
-        }
-      }) 
+  //     stars().forEach((otherStar, otherIndex) => {
+  //       if (otherIndex <= clickedIndex) {
+  //         otherStar.classList.add("active")
+  //       }
+  //     }) 
   
-      alert(`star of index ${clickedIndex + 1} was clicked`)
-    })
-  })
+  //     alert(`star of index ${clickedIndex + 1} was clicked`)
+  //   })
+  // })
 
   return divCard
 }
@@ -98,12 +98,27 @@ const addCards = () => {
 
     mainContainer().appendChild(row)
   })
+
+  stars().forEach((star, clickedIndex) => {
+    star.addEventListener("click", ()=> {
+  
+      starWrapper().classList.add("disabled")
+      
+      stars().forEach((otherStar, otherIndex) => {
+        if (otherIndex <= clickedIndex) {
+          otherStar.classList.add("active")
+        }
+      }) 
+  
+      console.log(`star of index ${clickedIndex + 1} was clicked`)
+    })
+  })
 }
 
 const addCard = (dish) => {
 
   const column = document.createElement("div");
-  column.className = "col s12 m4"
+  column.className = "col s12 m3"
 
   column.appendChild(createCard(dish))
 
