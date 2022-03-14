@@ -55,6 +55,19 @@ const createCard = (dish) => {
   star3.innerText = "★"
   star4.innerText = "★"
   star5.innerText = "★"
+
+  star1.dataset.rating = 1
+  star2.dataset.rating = 2
+  star3.dataset.rating = 3
+  star4.dataset.rating = 4
+  star5.dataset.rating = 5
+
+  star1.style.marginRight= "0px"
+  star2.style.marginRight= "0px"
+  star3.style.marginRight= "0px"
+  star4.style.marginRight= "0px"
+  star5.style.marginRight= "0px"
+
   
   divImage.appendChild(image);
   divImage.appendChild(span);
@@ -69,21 +82,12 @@ const createCard = (dish) => {
   divCard.appendChild(divImage)
   divCard.appendChild(divCardContent)
   divCard.appendChild(divCardAction)
-
-  // stars().forEach((star, clickedIndex) => {
-  //   star.addEventListener("click", ()=> {
   
-  //     //starWrapper().classList.add("disabled")
-      
-  //     stars().forEach((otherStar, otherIndex) => {
-  //       if (otherIndex <= clickedIndex) {
-  //         otherStar.classList.add("active")
-  //       }
-  //     }) 
-  
-  //     alert(`star of index ${clickedIndex + 1} was clicked`)
-  //   })
-  // })
+  star1.addEventListener('click', addRating)
+  star2.addEventListener('click', addRating)
+  star3.addEventListener('click', addRating)
+  star4.addEventListener('click', addRating)
+  star5.addEventListener('click', addRating)
 
   return divCard
 }
@@ -99,20 +103,22 @@ const addCards = () => {
     mainContainer().appendChild(row)
   })
 
-  stars().forEach((star, clickedIndex) => {
-    star.addEventListener("click", ()=> {
   
-      starWrapper().classList.add("disabled")
+  // stars().forEach((star, clickedIndex) => {
+  //   star.addEventListener("click", ()=> {
+  
+  //     starWrapper().classList.add("disabled")
       
-      stars().forEach((otherStar, otherIndex) => {
-        if (otherIndex <= clickedIndex) {
-          otherStar.classList.add("active")
-        }
-      }) 
+  //     stars().forEach((otherStar, otherIndex) => {
+  //       if (otherIndex <= clickedIndex) {
+  //         otherStar.classList.add("active")
+  //       }
+  //     }) 
   
-      console.log(`star of index ${clickedIndex + 1} was clicked`)
-    })
-  })
+  //     console.log(`star of index ${clickedIndex + 1} was clicked`)
+  //   })
+  // })
+  
 }
 
 const addCard = (dish) => {
@@ -208,14 +214,27 @@ const renderIdeasToPage = (event) => {
   event.target.reset()
 }
 
+const addRating = (e) => {
+  console.log(e.target)
+  const starDiv = e.target.parentNode
+  const rating = parseInt(e.target.dataset.rating, 10)
+  
+  const aStars = starDiv.querySelectorAll('a')
+  
+  for (let i = 0; i < rating; i++) {
+    const a = aStars[i]
+    a.classList.add('active')
+  }
+}
+
 
 // const rateEvent = (event) => {
-//   console.log(event)
-//   const ratingStars = [...document.getElementsByClassName("star")]
-//   executeRating(ratingStars)
-// }
+  //   console.log(event)
+  //   const ratingStars = [...document.getElementsByClassName("star")]
+  //   executeRating(ratingStars)
+  // }
 
-//   // if (event.target.innerText === fullStar) {
+  //   // if (event.target.innerText === fullStar) {
 //   //   event.target.innerText = emptyStar
 //   //   event.target.classList.remove("active")
 //   // } else if (event.target.innerText === emptyStar) {
@@ -237,30 +256,30 @@ const renderIdeasToPage = (event) => {
 //         }
 //       })
 //     }
-  
+
   
 
 //  // const ratingStars = [...document.getElementsByClassName("rating__star")];
 
 // // function executeRating(stars) {
-// //   const starClassActive = "rating__star fas fa-star";
-// //   const starClassInactive = "rating__star far fa-star";
-// //   const starsLength = stars.length;
-// //   let i;
-// //   stars.map((star) => {
+  // //   const starClassActive = "rating__star fas fa-star";
+  // //   const starClassInactive = "rating__star far fa-star";
+  // //   const starsLength = stars.length;
+  // //   let i;
+  // //   stars.map((star) => {
 // //     star.onclick = () => {
-// //       i = stars.indexOf(star);
-
-// //       if (star.className===starClassInactive) {
-// //         for (i; i >= 0; --i) stars[i].className = starClassActive;
-// //       } else {
+  // //       i = stars.indexOf(star);
+  
+  // //       if (star.className===starClassInactive) {
+    // //         for (i; i >= 0; --i) stars[i].className = starClassActive;
+    // //       } else {
 // //         for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
 // //       }
 // //     };
 // //   });
 // // }
 // // executeRating(ratingStars);
- 
+
   
 
 //EVENT LISTENERS
@@ -277,8 +296,18 @@ const attachIdeaLinkEvent = () => {
 document.addEventListener("DOMContentLoaded", () => {
   fetchDishes()  
   attachShnitzelLinkEvent()
-    attachIdeaLinkEvent()
+  attachIdeaLinkEvent()
     
 }) 
+
+// const attachClicksToStars = () => {
+//   console.log('star:', stars())
+//   for (let i = 0; i < stars().length; i++) {
+//     const star = stars()[i]
+    
+
+//     star.addEventListener('click', addRating)
+//   }
+// }
 
 

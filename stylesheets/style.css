@@ -2,10 +2,6 @@
     font:400
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating){
-    margin-right: 0px;
-}
-
 .stars{
     display: flex;
 }
@@ -17,7 +13,7 @@
     padding: 2px;
 }
 
-.stars:hover a{
+/* .stars:hover a{
     opacity: 100%;
 }
 
@@ -27,14 +23,10 @@
 
 .stars a:hover ~ a{
     opacity: 50%;
-}
+} */
 
-.stars a .active{
+.stars a.active{
     opacity: 100%;
-}
-
-.stars.disabled{
-    pointer-events: none;
 }
 
 .form-wrapper {
