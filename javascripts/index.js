@@ -102,23 +102,6 @@ const addCards = () => {
 
     mainContainer().appendChild(row)
   })
-
-  
-  // stars().forEach((star, clickedIndex) => {
-  //   star.addEventListener("click", ()=> {
-  
-  //     starWrapper().classList.add("disabled")
-      
-  //     stars().forEach((otherStar, otherIndex) => {
-  //       if (otherIndex <= clickedIndex) {
-  //         otherStar.classList.add("active")
-  //       }
-  //     }) 
-  
-  //     console.log(`star of index ${clickedIndex + 1} was clicked`)
-  //   })
-  // })
-  
 }
 
 const addCard = (dish) => {
@@ -167,9 +150,7 @@ const createForm = () => {
   li3.appendChild(button)
   formWrapper.appendChild(form)
   mainContainer().appendChild(formWrapper)
-
 }
-
 
 //EVENT HANDLERS
 const renderShnitzelToPage = (e) => {
@@ -228,60 +209,6 @@ const addRating = (e) => {
 }
 
 
-// const rateEvent = (event) => {
-  //   console.log(event)
-  //   const ratingStars = [...document.getElementsByClassName("star")]
-  //   executeRating(ratingStars)
-  // }
-
-  //   // if (event.target.innerText === fullStar) {
-//   //   event.target.innerText = emptyStar
-//   //   event.target.classList.remove("active")
-//   // } else if (event.target.innerText === emptyStar) {
-//   //   event.target.innerText = fullStar
-//   //   event.target.classList.add("active")
-//   // }
-
-//   const executeRating = (stars) => {
-
-//     stars.map((star)=> {
-    
-//       let i = stars.indexOf(star)
-//       console.log(i)
-
-//       if (star.className === "inactive") {
-//         for (i; i >=0; --i) stars[i].classList.add("active")
-//         } else {
-//         for (i; i < stars.length; ++i) stars[i].classList.remove("active")
-//         }
-//       })
-//     }
-
-  
-
-//  // const ratingStars = [...document.getElementsByClassName("rating__star")];
-
-// // function executeRating(stars) {
-  // //   const starClassActive = "rating__star fas fa-star";
-  // //   const starClassInactive = "rating__star far fa-star";
-  // //   const starsLength = stars.length;
-  // //   let i;
-  // //   stars.map((star) => {
-// //     star.onclick = () => {
-  // //       i = stars.indexOf(star);
-  
-  // //       if (star.className===starClassInactive) {
-    // //         for (i; i >= 0; --i) stars[i].className = starClassActive;
-    // //       } else {
-// //         for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
-// //       }
-// //     };
-// //   });
-// // }
-// // executeRating(ratingStars);
-
-  
-
 //EVENT LISTENERS
 const attachShnitzelLinkEvent = () => {
     shnitzelButton().addEventListener('click', renderShnitzelToPage)
@@ -291,8 +218,6 @@ const attachIdeaLinkEvent = () => {
     ideaButton().addEventListener('click', renderFormToPage)
 }
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
   fetchDishes()  
   attachShnitzelLinkEvent()
@@ -300,14 +225,5 @@ document.addEventListener("DOMContentLoaded", () => {
     
 }) 
 
-// const attachClicksToStars = () => {
-//   console.log('star:', stars())
-//   for (let i = 0; i < stars().length; i++) {
-//     const star = stars()[i]
-    
-
-//     star.addEventListener('click', addRating)
-//   }
-// }
 
 
