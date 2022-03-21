@@ -32,65 +32,44 @@ const createCard = (dish) => {
   const divCardAction = document.createElement('div');
   const link1 = document.createElement("a")
   const divStarWrapper = document.createElement('div')
-  const star1 = document.createElement('a')
-  const star2 = document.createElement('a')
-  const star3 = document.createElement('a')
-  const star4 = document.createElement('a')
-  const star5 = document.createElement('a')
-
+  
+  
+    for (let i = 0; i < 5; i++) {
+      star = document.createElement('a')
+      star.innerText = "★"
+      star.dataset.rating = `${i+1}`
+      star.style.marginRight= "0px"
+      divStarWrapper.appendChild(star)
+      star.addEventListener('click', addRating)
+    }
+  
+  
+  divStarWrapper.className = "stars"
   divCard.className = "card";
   divImage.className = "card-image"
   span.className = "card-title";
   divCardContent.className = "card-content"
   divCardAction.className = "card-action"
-  divStarWrapper.className = "stars"
   
   image.setAttribute("src", dish.image);
   span.innerText = dish.name;
   pDescription.innerText = dish.description
   link1.setAttribute("href", "#")
   link1.innerText = "Rate this"
-  star1.innerText = "★"
-  star2.innerText = "★"
-  star3.innerText = "★"
-  star4.innerText = "★"
-  star5.innerText = "★"
-
-  star1.dataset.rating = 1
-  star2.dataset.rating = 2
-  star3.dataset.rating = 3
-  star4.dataset.rating = 4
-  star5.dataset.rating = 5
-
-  star1.style.marginRight= "0px"
-  star2.style.marginRight= "0px"
-  star3.style.marginRight= "0px"
-  star4.style.marginRight= "0px"
-  star5.style.marginRight= "0px"
-
-  
+ 
   divImage.appendChild(image);
   divImage.appendChild(span);
   divCardContent.appendChild(pDescription)
   divCardAction.appendChild(link1)
   divCardAction.appendChild(divStarWrapper)
-  divStarWrapper.appendChild(star1)
-  divStarWrapper.appendChild(star2)
-  divStarWrapper.appendChild(star3)
-  divStarWrapper.appendChild(star4)
-  divStarWrapper.appendChild(star5)
   divCard.appendChild(divImage)
   divCard.appendChild(divCardContent)
   divCard.appendChild(divCardAction)
-  
-  star1.addEventListener('click', addRating)
-  star2.addEventListener('click', addRating)
-  star3.addEventListener('click', addRating)
-  star4.addEventListener('click', addRating)
-  star5.addEventListener('click', addRating)
 
   return divCard
 }
+
+
 
 const addCards = () => {
   const row = document.createElement("row")
